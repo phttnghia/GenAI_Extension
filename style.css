@@ -52,6 +52,7 @@ body {
     max-width: 90%;
     word-wrap: break-word;
     line-height: 1.4;
+    font-size: 13px; /* Added smaller font size for messages */
 }
 
 .message.user {
@@ -83,6 +84,14 @@ body {
     margin-top: 5px;
 }
 
+.input-area button {
+    font-size: 13px; /* Added smaller font size for the send button */
+}
+
+.input-area textarea {
+    font-size: 13px; /* Added smaller font size for the send button */
+}
+
 #question {
     resize: none;
 }
@@ -95,4 +104,41 @@ body {
 
 .section {
     margin-bottom: 10px;
+}
+
+
+/* Tiêu đề chính của báo cáo */
+.report-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+/* Các mục con (1, 2, 3...) */
+.section h6 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #495057;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Danh sách gạch đầu dòng */
+.analysis-report ul {
+    padding-left: 20px; /* Thụt đầu dòng để hiện dấu chấm */
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.analysis-report li {
+    font-size: 13px;
+    margin-bottom: 4px; /* Khoảng cách giữa các dòng */
+}
+
+/* Đảm bảo bong bóng chat chứa đủ nội dung rộng */
+.message {
+    max-width: 95%; /* Tăng độ rộng để hiển thị bảng/list đẹp hơn */
 }
