@@ -16,9 +16,13 @@ body {
     background: #ffffff;
     border-radius: 8px;
     transition: height 0.2s, min-height 0.2s;
-    min-height: 70px; /* Just enough for header and buttons */
-    height: auto;
-    border: solid 1px #e0e0e0;
+    min-height: 0; /* Chỉ vừa đủ cho header và button, không dư */
+    .ai-wrapper.expanded {
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+    height: 100px;
 }
 
 /* Fixed height for chatbox mode */
@@ -31,7 +35,10 @@ body {
 
 /* When report or chatbox is open, remove min-height for auto expansion */
 .ai-wrapper.expanded {
+    height: 600px !important;
+    max-height: 600px !important;
     min-height: 0 !important;
+    overflow: hidden;
 }
 
 /* ---------- Header ---------- */
