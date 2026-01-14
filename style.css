@@ -38,7 +38,6 @@ body {
     overflow-y: auto;
     padding: 10px;
     background: #ffffff;
-    border: 1px solid #e9ecef;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -52,13 +51,14 @@ body {
     max-width: 90%;
     word-wrap: break-word;
     line-height: 1.4;
-    font-size: 13px; /* Added smaller font size for messages */
+    font-size: 13px;
+    /* Added smaller font size for messages */
 }
 
 .message.user {
     align-self: flex-end;
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: #f1f3f4;
+    color: #333333;
     border-bottom-right-radius: 2px;
 }
 
@@ -78,19 +78,21 @@ body {
 }
 
 /* ---------- Input Area ---------- */
-.input-area {
+/* .input-area {
     display: flex;
     gap: 10px;
     margin-top: 5px;
-}
-
+} */
+/* 
 .input-area button {
-    font-size: 13px; /* Added smaller font size for the send button */
-}
+    font-size: 13px; */
+    /* Added smaller font size for the send button */
+/* } */
 
-.input-area textarea {
-    font-size: 13px; /* Added smaller font size for the send button */
-}
+/* .input-area textarea {
+    font-size: 13px; */
+    /* Added smaller font size for the send button */
+/* } */
 
 #question {
     resize: none;
@@ -107,7 +109,6 @@ body {
 }
 
 
-/* Tiêu đề chính của báo cáo */
 .report-title {
     font-size: 16px;
     font-weight: bold;
@@ -117,7 +118,6 @@ body {
     padding-bottom: 5px;
 }
 
-/* Các mục con (1, 2, 3...) */
 .section h6 {
     font-size: 14px;
     font-weight: bold;
@@ -126,19 +126,113 @@ body {
     margin-bottom: 5px;
 }
 
-/* Danh sách gạch đầu dòng */
 .analysis-report ul {
-    padding-left: 20px; /* Thụt đầu dòng để hiện dấu chấm */
+    padding-left: 20px;
     margin-bottom: 10px;
     margin-top: 0;
 }
 
 .analysis-report li {
     font-size: 13px;
-    margin-bottom: 4px; /* Khoảng cách giữa các dòng */
+    margin-bottom: 4px;
 }
 
-/* Đảm bảo bong bóng chat chứa đủ nội dung rộng */
 .message {
-    max-width: 95%; /* Tăng độ rộng để hiển thị bảng/list đẹp hơn */
+    max-width: 95%;
+}
+
+
+/* Container to anchor the button inside */
+.input-wrap {
+    position: relative;
+    /* adjust as needed */
+}
+
+/* Textarea styling */
+.message-input {
+    width: 100%;
+    min-height: 84px;
+    resize: none;
+    resize: vertical;
+    font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #1b1b1b;
+    background: #fff;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    padding: 10px 44px 12px 12px;
+    /* right padding to make space for the icon */
+    outline: none;
+    transition: box-shadow .15s ease, border-color .15s ease;
+
+    align-self: start;
+    /* or center */
+    justify-self: start;
+    /* if needed in grid */
+    flex: 0 0 auto;
+    /* if inside flex */
+
+}
+
+.message-input::placeholder {
+    color: #6b6b6b;
+}
+
+.message-input:focus {
+    border-color: #6b6b6b;
+}
+
+.message-input:active {
+    border: none;
+}
+
+/* Ghost send button positioned inside the textarea */
+.send-ghost {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: transform .06s ease, background-color .15s ease, color .15s ease;
+}
+
+/* Icon */
+.send-ghost svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Subtle, still “ghosty” affordances */
+.send-ghost:hover {
+    background: rgba(0, 0, 0, 0.05);
+    /* ultra-light hover; remove if you want pure ghost */
+}
+
+.send-ghost:active {
+    transform: translateY(1px);
+    border: none;
+}
+
+.send-ghost:focus {
+    outline: none;
+    border: none;
+}
+
+/* Keyboard focus (a11y) */
+.send-ghost:focus-visible {
+    outline: none;
+}
+
+/* Disabled state */
+.send-ghost:disabled {
+    opacity: .45;
+    cursor: not-allowed;
 }

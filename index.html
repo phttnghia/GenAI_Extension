@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap -->
@@ -15,10 +16,8 @@
 <body>
     <div class="container ai-wrapper">
         <div class="header">
-            <img id="headerIcon"
-                 src="download.png"
-                 alt="icon"
-                 onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Crect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%230d6efd%22/%3E%3Ctext x=%2212%22 y=%2216%22 font-size=%2210%22 text-anchor=%22middle%22 fill=%22white%22%3EDL%3C/text%3E%3C/svg%3E';">
+            <img id="headerIcon" src="download.png" alt="icon"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Crect width=%2224%22 height=%2224%22 rx=%224%22 fill=%22%230d6efd%22/%3E%3Ctext x=%2212%22 y=%2216%22 font-size=%2210%22 text-anchor=%22middle%22 fill=%22white%22%3EDL%3C/text%3E%3C/svg%3E';">
             <h5>AI Project Assistant</h5>
         </div>
 
@@ -30,15 +29,26 @@
 
         <div id="loading">Thinking...</div>
 
-        <div class="input-area">
+        <!-- <div class="input-area">
             <textarea id="question"
                       class="form-control"
                       rows="1"
                       placeholder="Input your question..."></textarea>
             <button id="sendBtn" class="btn btn-primary">Send</button>
+        </div> -->
+
+        <div class="input-wrap">
+            <textarea id="question" class="message-input" rows="3" placeholder="Input your question..."></textarea>
+            <button id="sendBtn" class="send-ghost" aria-label="Send">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 11.5l18-8-8 18-2.7-6.3L3 11.5z" />
+                </svg>
+            </button>
         </div>
+
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
