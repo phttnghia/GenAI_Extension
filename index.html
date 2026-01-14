@@ -21,23 +21,24 @@
             <h5>AI Project Assistant</h5>
         </div>
 
-        <div id="messages">
+        <!-- Added toggle buttons -->
+        <div class="toggle-buttons" style="margin-bottom: 10px;">
+            <button id="showReportBtn" class="btn btn-secondary">Show Report</button>
+            <button id="showChatBtn" class="btn btn-secondary">Show Chatbox</button>
+        </div>
+
+        <!-- Added report div, initially hidden -->
+        <div id="report" style="display: none; padding: 10px; border: 1px solid #e9ecef; border-radius: 8px; background: #f8f9fa; margin-bottom: 10px;"></div>
+
+        <div id="messages" style="display: none;">
             <div class="message ai">
                 Hi! What would you like to know about today’s bug metrics?
             </div>
         </div>
 
-        <div id="loading">Thinking...</div>
+        <div id="loading" style="display: none;"></div>
 
-        <!-- <div class="input-area">
-            <textarea id="question"
-                      class="form-control"
-                      rows="1"
-                      placeholder="Input your question..."></textarea>
-            <button id="sendBtn" class="btn btn-primary">Send</button>
-        </div> -->
-
-        <div class="input-wrap">
+        <div class="input-wrap" style="display: none;">
             <textarea id="question" class="message-input" rows="3" placeholder="Input your question..."></textarea>
             <button id="sendBtn" class="send-ghost" aria-label="Send">
                 <svg viewBox="0 0 24 24" aria-hidden="true">

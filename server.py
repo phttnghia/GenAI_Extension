@@ -3,12 +3,12 @@ from flask_cors import CORS
 import openai
 import os
 
-# Định nghĩa thư mục hiện tại là nơi chứa file html/js
+
 current_directory = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, static_folder=current_directory)
 CORS(app)
 
-# --- PHẦN 1: CẤU HÌNH WEB SERVER (FRONTEND) ---
+# --- PHẦN 1: (FRONTEND) ---
 
 @app.route('/')
 def index():
@@ -18,23 +18,19 @@ def index():
 def serve_static(path):
     return send_from_directory(current_directory, path)
 
-# --- PHẦN 2: CẤU HÌNH API AI (BACKEND) ---
+# --- PHẦN 2:  (BACKEND) ---
 
 
 
 @app.route('/ask-ai', methods=['POST'])
 def ask_ai():
-    # Nhận dữ liệu từ client (nếu cần)
     data = request.json
     user_question = data.get('question')
     chart_data = data.get('context_data')
 
-    print(f"Nhận câu hỏi: {user_question}")
+    print(f"Receive questions: {user_question}")
 
-    # Trả về dữ liệu mockup cho user xem ngay
-    # ... (các phần trên giữ nguyên) ...
 
-    # Trả về dữ liệu mockup HTML có cấu trúc chuẩn
     mock_html = """
     <div class="analysis-report">
         <h5 class="report-title">Bug Control Chart Analysis Results</h5>

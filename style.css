@@ -13,10 +13,25 @@ body {
     display: flex;
     flex-direction: column;
     padding: 15px;
-    max-height: 100%;
     background: #ffffff;
-    border: 2px solid #000;
     border-radius: 8px;
+    transition: height 0.2s, min-height 0.2s;
+    min-height: 70px; /* Just enough for header and buttons */
+    height: auto;
+    border: solid 1px #e0e0e0;
+}
+
+/* Fixed height for chatbox mode */
+.ai-wrapper.chatbox-mode {
+    height: 600px !important;
+    max-height: 600px !important;
+    min-height: 0 !important;
+    overflow: hidden;
+}
+
+/* When report or chatbox is open, remove min-height for auto expansion */
+.ai-wrapper.expanded {
+    min-height: 0 !important;
 }
 
 /* ---------- Header ---------- */
