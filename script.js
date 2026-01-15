@@ -42,9 +42,12 @@ async function askAI() {
 
     if (!question) return;
 
-    addMessage(question, 'user');
-    questionEl.value = ''; // Delete question box
-    loadingDiv.style.display = 'block'; // Display Thinking...
+    // Clear previous messages and show loading
+    const messages = document.getElementById('messages');
+    messages.innerHTML = ''; // Clear all previous content
+    loadingDiv.style.display = 'block';
+
+    questionEl.value = ''; // Clear input
 
     try {
         const dashboard = tableau.extensions.dashboardContent.dashboard;
@@ -163,47 +166,4 @@ document.getElementById('showChatBtn').addEventListener('click', () => {
     }
 });
 
-// Existing chat functionality (if any) can be added here
-// For example, handling the send button
-document.getElementById('sendBtn').addEventListener('click', () => {
-    const question = document.getElementById('question').value;
-    if (question.trim()) {
-        // Add user message to chat
-        const messagesDiv = document.getElementById('messages');
-        const userMessage = document.createElement('div');
-        userMessage.className = 'message user';
-        userMessage.textContent = question;
-        messagesDiv.appendChild(userMessage);
-
-        // Show loading
-        document.getElementById('loading').style.display = 'block';
-
-        // Send to API
-        fetch('/ask-ai', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: question, context_data: {} })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Hide loading
-            document.getElementById('loading').style.display = 'none';
-
-            // Add AI response
-            const aiMessage = document.createElement('div');
-            aiMessage.className = 'message ai';
-            aiMessage.innerHTML = data.answer;
-            messagesDiv.appendChild(aiMessage);
-
-            // Scroll to bottom
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        })
-        .catch(error => {
-            document.getElementById('loading').style.display = 'none';
-            console.error('Error:', error);
-        });
-
-        // Clear input
-        document.getElementById('question').value = '';
-    }
-});
+// Existing chat functionality removed to avoid duplication
