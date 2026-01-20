@@ -75,12 +75,16 @@ async function askAI() {
 
         const result = await res.json();
 
+        if (!res.ok) {
+            throw new Error(result.error || result.message || 'Lỗi từ server');
+        }
+
         // 4. Display respond AI (Dạng HTML)
         addMessage(result.answer, 'ai');
 
     } catch (err) {
         console.error(err);
-        addMessage('Lỗi: ' + (err.message || "Không kết nối được server"), 'ai');
+        addMessage('<div class="alert alert-danger">Lỗi: ' + (err.message || "Không kết nối được server. Vui lòng kiểm tra kết nối và thử lại.") + '</div>', 'ai');
     } finally {
         loadingDiv.style.display = 'none';
     }
@@ -129,14 +133,24 @@ document.getElementById('showReportBtn').addEventListener('click', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question: 'Show bug analysis', context_data: {} })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.error || err.message || 'Lỗi từ server'); });
+            }
+            return response.json();
+        })
         .then(data => {
             reportDiv.innerHTML = data.answer;
             reportDiv.style.display = 'block';
             // Let wrapper auto-size
             wrapper.classList.add('expanded');
         })
-        .catch(error => console.error('Error fetching report:', error));
+        .catch(error => {
+            console.error('Error fetching report:', error);
+            reportDiv.innerHTML = '<div class="alert alert-danger">Lỗi: ' + error.message + '</div>';
+            reportDiv.style.display = 'block';
+            wrapper.classList.add('expanded');
+        });
     } else {
         reportDiv.style.display = 'none';
         wrapper.classList.remove('expanded');

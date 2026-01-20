@@ -32,33 +32,9 @@ def ask_ai():
 
 
     mock_html = """
-    <div class="analysis-report">
-        <h5 class="report-title">Bug Control Chart Analysis Results</h5>
-
-        <div class="section">
-            <h6>1. Summary of Defect Detection Status</h6>
-            <ul>
-                <li>Total Bugs Found This Week: <b>16</b></li>
-                <li>Fixed Bugs: <b>14</b></li>
-                <li>Remaining Bugs: <b style="color: red;">2</b></li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h6>2. Trend Analysis</h6>
-            <ul>
-                <li>The number of bugs discovered was initially high, but decreased toward the end of testing.</li>
-                <li>The lead time from discovery to fix was generally 1-2 days, and the fix cycle was also favorable.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h6>3. Future Concerns</h6>
-            <ul>
-                <li>Currently, many of the unfixed bugs are minor and are expected to be resolved by release.</li>
-                <li>Continue to pay attention to the comprehensiveness of test cases and the trend of new bugs.</li>
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <h5>Error: Failed to load error analysis report</h5>
+        <p>Error details: Database connection failed. Please check the database connection and try again later.</p>
     </div>
     """
     return jsonify({"answer": mock_html})
